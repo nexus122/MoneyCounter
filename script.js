@@ -13,6 +13,7 @@ class SalarioPorSegundo {
         this.playButton.addEventListener("click", () => this.start());
         this.pauseButton.addEventListener("click", () => this.pause());
         this.resetButton.addEventListener("click", () => this.reset());
+        this.pauseButton.style.display = "none";
     }
 
     start = () => {
@@ -21,12 +22,16 @@ class SalarioPorSegundo {
                 this.addAmount();
                 this.updateTime();
             }, 1000);
+            this.playButton.style.display = "none";
+            this.pauseButton.style.display = "inline-block";
         }
     };
 
     pause = () => {
         clearInterval(this.intervalId);
         this.intervalId = null;
+        this.playButton.style.display = "inline-block";
+        this.pauseButton.style.display = "none";
     };
 
     reset = () => {
@@ -34,6 +39,8 @@ class SalarioPorSegundo {
         this.time = 0;
         this.drawAmount();
         this.resetTime();
+        //this.playButton.style.display = "inline-block";
+        //this.pauseButton.style.display = "none";
     };
 
     getSalarioBrutoSegundo = () => {
